@@ -11,4 +11,10 @@ lb.insert(2, "3번")
 lb.insert(3, "4번")
 lb.insert(4, "5번")
 lb.pack()
+
+# Button
+btn = Button(win)
+btn.config(text="옵션 선택")
+btn.pack()
+
 win.mainloop()
