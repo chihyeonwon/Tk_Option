@@ -17,4 +17,7 @@ btn = Button(win)
 btn.config(text="옵션 선택")
 btn.pack()
 
+# Label
+lab = Label(win)
+lab.pack()
 win.mainloop()
