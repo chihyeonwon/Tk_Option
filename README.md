@@ -110,12 +110,50 @@ win.mainloop()
 2번째 옵션을 선택하고 옵션선택 버튼을 누르면 다음과 같이 몇번 째를 선택했는지 출력해줍니다.
 ![Listbox_use](https://user-images.githubusercontent.com/58906858/152482832-cc1e026d-51a0-4efe-b856-9fab29358fda.png)
 
+## Checkbutton
+
+### CheckButton는 CheckButton 함수를 이용해서 만들 수 있습니다.
+```python
+cb = CheckBox(win)
+cb.config(text="1번")
+cb.pack()
+```   
+### CheckButton은 Listbox와는 다르게 변수하나에 하나의 위젯(옵션)을 저장할 수 있습니다.
+체크버튼을 3개를 만들려면 변수 3개를 선언해서 각각 체크버튼을 생성해줘야합니다.
+```python
+cb1 = CheckBox(win, text="1번")
+cb2 = CheckBox(win, text="1번")
+cb3 = CheckBox(win, text="1번")
+cb1.pack()
+cb2.pack()
+cb3.pack()
+```  
+
+## CheckButton의 체크유무를 구분해주는 함수 IntVar()를 사용합니다.
+
+cv 변수에 IntVar() 함수를 저장하고 get 함수로 cv 클래스 안의 값을 꺼내오기 위해 get 함수로 출력을 해봅니다.
+```python
+# Checkbutton
+cv = IntVar() # 클릭한상태를 정수의 형태로 저장합니다.
+cb = Checkbutton(win, text="1번", variable=cv)
+cb.pack()
+
+# Button
+btn = Button(win)
+btn.config(text="옵션 선택")
 
 
+def click():
+    text = cv.get() # cv 클래스 안의 값을 꺼내오기위해 get 함수를 사용
+    print(text) # 꺼내온 값을 출력
 
 
+btn.config(command=click)
+btn.pack()
+```
+옵션을 클릭하지 않았을 때 0을 옵션을 클릭했을 때 1을 출력하는 것을 알 수 있습니다.
 
-## Chec kbutton
+
 
 ## Radiobutton
 
