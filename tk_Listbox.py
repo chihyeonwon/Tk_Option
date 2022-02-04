@@ -18,7 +18,6 @@ btn.config(text="옵션 선택")
 
 
 def click():
-    global text
     text = lb.curselection()[0]
     lab.config(text="{}번 째를 선택하셨습니다.".format(int(text)+1))
 
