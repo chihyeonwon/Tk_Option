@@ -14,7 +14,7 @@ btn.config(text="옵션 선택")
 
 def click():
     text = cv.get()
-    print(text)
+    lab.config(text=text)
 
 
 btn.config(command=click)
