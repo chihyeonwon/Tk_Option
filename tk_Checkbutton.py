@@ -2,6 +2,10 @@ from tkinter import *
 win = Tk()
 win.geometry("500x500")
 win.option_add("*Font", "Arial, 20")
+# Checkbutton
+cv = IntVar()
+cb = Checkbutton(win, text="1번", variable=cv)
+cb.pack()
 
 # Button
 btn = Button(win)
@@ -9,8 +13,8 @@ btn.config(text="옵션 선택")
 
 
 def click():
-    text = lb.curselection()[0]
-    lab.config(text="{}번 째를 선택하셨습니다.".format(int(text)+1))
+    text = cv.get()
+    print(text)
 
 
 btn.config(command=click)
