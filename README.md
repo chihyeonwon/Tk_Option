@@ -194,11 +194,104 @@ win.mainloop()
 프로그램 실행화면은 다음과 같습니다.
 
 ![Checkbutton](https://user-images.githubusercontent.com/58906858/152485445-8dfcb0a8-2459-47db-aba8-6ead4c57bae4.png)   
-반환되는 값 0과 1을 사용해서 다양한 응용이 가능합니다.
-
-
+반환되는 값 0과 1을 사용해서 다양한 응용이 가능합니다.   
 
 ## Radiobutton
+
+### 라디오버튼은 체크버튼과 만드는 방법은 유사하나 여러가지 옵션이 있을 때 그 중 하나를 선택한다는 차이가 있습니다.   
+
+Radiobutton을 생성하고 Checkbutton과 마찬가지로 IntVar()함수를 사용해서 cv에 저장한후 variable옵션으로 줍니다.
+```python
+# Radiobutton
+rv = IntVar()
+rb = Radiobutton(win, text="1번", variable=rv)
+rb.pack()
+```   
+   
+변수 3개에 각각 다른 라디오버튼을 생성해줍니다.
+```python
+# Radiobutton
+rv = IntVar()
+rb1 = Radiobutton(win, text="1번", variable=rv)
+rb2 = Radiobutton(win, text="2번", variable=rv)
+rb3 = Radiobutton(win, text="3번", variable=rv)
+rb1.pack()
+rb2.pack()
+rb3.pack()
+```
+
+하지만 이렇게 구성하면 겉보기로는 구분이 되어있지만 내부적으로는 구분이 되어있지않아 옵션하나를 선택하면 모두 선택이 됩니다.   
+   
+변수는 rv 하나만 사용해서 같은 항목으로 묶고 각각의 옵션을 구분하기 위해서 value옵션의 값을 다르게 줍니다.
+```python
+# Radiobutton
+rv = IntVar()
+rb1 = Radiobutton(win, text="1번", value=0, variable=rv)
+rb2 = Radiobutton(win, text="2번", value=1, variable=rv)
+rb3 = Radiobutton(win, text="3번", value=2, variable=rv)
+rb1.pack()
+rb2.pack()
+rb3.pack()
+```
+
+버튼을 눌렀을 때 라벨에 반환값을 출력하도록 해보면
+```python
+# Button
+btn = Button(win)
+btn.config(text="옵션 선택")
+
+
+def click():
+    lab_text = rv.get()
+    lab.config(text=lab_text)
+
+
+btn.config(command=click)
+btn.pack()
+```
+RadioButton함수의 value옵션 값으로 지정한 값이 출력되는 것을 알 수 있습니다.
+
+### 최종코드와 프로그램 실행
+
+최종코드는 다음과 같습니다.
+```python
+from tkinter import *
+win = Tk()
+win.geometry("500x500")
+win.option_add("*Font", "Arial, 20")
+# Radiobutton
+rv = IntVar()
+rb1 = Radiobutton(win, text="1번", value=0, variable=rv)
+rb2 = Radiobutton(win, text="2번", value=1, variable=rv)
+rb3 = Radiobutton(win, text="3번", value=2, variable=rv)
+rb1.pack()
+rb2.pack()
+rb3.pack()
+
+# Button
+btn = Button(win)
+btn.config(text="옵션 선택")
+
+
+def click():
+    lab_text = rv.get()
+    lab.config(text=lab_text)
+
+
+btn.config(command=click)
+btn.pack()
+
+# Label
+lab = Label(win)
+lab.pack()
+win.mainloop()
+```
+   
+프로그램 실행 초기화면은 다음과 같습니다.   
+![Radiobutton_init](https://user-images.githubusercontent.com/58906858/152487429-bdd77fff-3da1-47b4-9bef-1347cb8f581d.png)
+
+옵션을 선택하고 옵션선택을 누르면 다음과 같이 value옵션에 저장한 값이 출력되는 것을 알 수 있습니다.
+![Radiobutton_value](https://user-images.githubusercontent.com/58906858/152487573-c5229c2e-28ab-4f3d-ae81-cd882b8ca4bf.png)
 
 ## Combobox
 
