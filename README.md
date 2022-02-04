@@ -5,7 +5,9 @@ tkinter와 Python으로 옵션 선택하는 위젯 다루기
 
 ## Listbox
 
-### 리스트박스는 Listbox()함수를 이용해서 만들 수 있습니다. 마찬가지로 pack()함수로 배치를 해줍니다.
+### 리스트박스는 Listbox()함수를 이용해서 만들 수 있습니다.   
+   
+마찬가지로 pack()함수로 배치를 해줍니다.
 
 Listbox.py
 ```python
@@ -13,7 +15,9 @@ lb = Listbox(win)
 lb.pack()
 ```   
    
-### 리스트박스 안에 컨텐츠를 넣을 때는 insert(위치, "내용") 함수를 사용합니다. 위치는 위에서부터 0,1,2,3 순으로 오름차순으로 들어가게됩니다.
+### 리스트박스 안에 컨텐츠를 넣을 때는 insert(위치, "내용") 함수를 사용합니다.   
+   
+위치는 위에서부터 0,1,2,3 순으로 오름차순으로 들어가게됩니다.
 ```python
 lb = Listbox(win)
 lb.insert(0, "1번")
@@ -129,7 +133,7 @@ cb2.pack()
 cb3.pack()
 ```  
 
-## CheckButton의 체크유무를 구분해주는 함수 IntVar()를 사용합니다.
+### CheckButton의 체크유무를 구분해주는 함수 IntVar()를 사용합니다.
 
 cv 변수에 IntVar() 함수를 저장하고 get 함수로 cv 클래스 안의 값을 꺼내오기 위해 get 함수로 출력을 해봅니다.
 ```python
@@ -152,6 +156,45 @@ btn.config(command=click)
 btn.pack()
 ```
 옵션을 클릭하지 않았을 때 0을 옵션을 클릭했을 때 1을 출력하는 것을 알 수 있습니다.
+
+### 최종코드와 프로그램 실행화면
+
+최종코드는 다음과 같습니다.
+
+tk_Checkbutton.py
+```python
+from tkinter import *
+win = Tk()
+win.geometry("500x500")
+win.option_add("*Font", "Arial, 20")
+# Checkbutton
+cv = IntVar()
+cb = Checkbutton(win, text="1번", variable=cv)
+cb.pack()
+
+# Button
+btn = Button(win)
+btn.config(text="옵션 선택")
+
+
+def click():
+    text = cv.get()
+    print(text)
+
+
+btn.config(command=click)
+btn.pack()
+
+# Label
+lab = Label(win)
+lab.pack()
+win.mainloop()
+```
+
+프로그램 실행화면은 다음과 같습니다.
+
+![Checkbutton](https://user-images.githubusercontent.com/58906858/152485445-8dfcb0a8-2459-47db-aba8-6ead4c57bae4.png)   
+반환되는 값 0과 1을 사용해서 다양한 응용이 가능합니다.
 
 
 
