@@ -366,9 +366,68 @@ win.mainloop()
 클릭하여 옵션 1을 선택하고 옵션선택 버튼을 누르면 버튼 밑에 1이 정상적으로 출력되는 것을 알 수 있습니다.
 ![Combobox_use](https://user-images.githubusercontent.com/58906858/152632478-17ab3f18-45e4-4cdf-93f4-48f97432ae6e.png)
 
-
-
-
 ## Spinbox
+
+### Spinbox 함수를 사용해서 위젯을 만들고 배치합니다.
+```python
+sb = Spinbox(win)
+sb.pack()
+```
+
+### 만들기만 하면 아무내용이 없으므로 최대치와 최소치를 config의 from_, to 옵션으로 설정합니다.
+```python
+sb = Spinbox(win)
+sb.config(from_=-1, to=1)
+sb.pack()
+```
+
+### 선택한 수치를 출력하는 것은 get함수를 사용합니다.
+   
+get 함수를 사용해서 선택한 수치를 라벨에 출력합니다.
+```python
+def click():
+    lab_text = sb.get()
+    lab.config(text=lab_text)
+```
+
+### 최종코드와 프로그램 실행 화면
+
+최종코드는 다음과 같습니다.
+```python
+from tkinter import *
+from tkinter .ttk import *
+win = Tk()
+win.geometry("500x500")
+win.option_add("*Font", "Arial, 20")
+# Spinbox
+sb = Spinbox(win)
+sb.config(from_=-1, to=1)
+sb.pack()
+# Button
+btn = Button(win)
+btn.config(text="옵션 선택")
+
+
+def click():
+    lab_text = sb.get()
+    lab.config(text=lab_text)
+
+
+btn.config(command=click)
+btn.pack()
+
+# Label
+lab = Label(win)
+lab.pack()
+win.mainloop()
+```
+
+프로그램 초기 실행 화면은 다음과 같습니다.   
+   
+![Spinbox_init](https://user-images.githubusercontent.com/58906858/152632760-415fb41f-221a-4ee9-b789-95310a56a798.png)
+   
+옵션을 -1로 선택하고 옵션선택 버튼을 클릭하면 밑에 위치한 라벨에 정상적으로 출력되는 것을 알 수 있습니다.
+![Spinbox_use](https://user-images.githubusercontent.com/58906858/152632779-92af64f3-c9d5-4223-8293-a59d0595de77.png)
+
 
 ## Scale
