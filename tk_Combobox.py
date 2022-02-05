@@ -4,8 +4,9 @@ win = Tk()
 win.geometry("500x500")
 win.option_add("*Font", "Arial, 20")
 # Combobox
+cb_list = ["1", "2", "3"]
 cb = Combobox(win)
-
+cb.config(values=cb_list)
 cb.pack()
 
 # Button
