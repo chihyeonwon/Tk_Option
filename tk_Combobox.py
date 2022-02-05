@@ -15,7 +15,7 @@ btn.config(text="옵션 선택")
 
 
 def click():
-    lab_text = rv.get()
+    lab_text = cb.get()
     lab.config(text=lab_text)
 
 
