@@ -4,7 +4,7 @@ win.geometry("500x500")
 win.option_add("*Font", "Arial, 20")
 # Scale
 scale = Scale(win)
-scale.config(from_=50, to=0)
+scale.config(from_=0, to=50, orient="horizontal")
 scale.pack()
 
 # Button
