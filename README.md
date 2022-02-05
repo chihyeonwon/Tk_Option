@@ -429,5 +429,89 @@ win.mainloop()
 옵션을 -1로 선택하고 옵션선택 버튼을 클릭하면 밑에 위치한 라벨에 정상적으로 출력되는 것을 알 수 있습니다.
 ![Spinbox_use](https://user-images.githubusercontent.com/58906858/152632779-92af64f3-c9d5-4223-8293-a59d0595de77.png)
 
-
 ## Scale
+   
+### Scale 함수를 사용해서 생성하고 배치합니다.
+```python
+scale=Scale(win)
+scale.pack()
+```
+
+### Scale안의 수치의 범위는 from_, to 를 사용해서 바꿀 수 있습니다.
+```python
+# Scale
+scale = Scale(win)
+scale.config(from_=50, to=0)
+scale.pack()
+```
+### Scale의 방향을 수평으로 바꾸려면 orient옵션을 "horizontal"로 설정합니다.
+
+Scale은 기본적으로는 수직으로 배치되어있습니다.   
+   
+수평으로 바꾸려면 config 옵션의 orient 값을 "horizontal"로 설정하면 됩니다.
+```python
+# Scale
+scale = Scale(win)
+scale.config(from_=0, to=50, orient="horizontal")
+scale.pack()
+```
+### 특정 수치를 표시할 때는 tickinterval 옵션을 설정합니다.
+
+0부터 100까지 10 간격으로 수치를 표시하려면 다음과 같습니다.
+```python
+scale.config(length=1000, tickinterval=10, from_=0, to=50, orient="horizontal")
+```
+실행화면은 다음과 같습니다.
+![Scale_tickinterval](https://user-images.githubusercontent.com/58906858/152633130-eb52d57e-89ab-48f2-bc27-d3bde3108d08.png)   
+   
+### 선택한 수치를 출력하기 위해서 get 함수를 사용합니다.
+
+옵션 버튼을 클릭했을 때 선택한 수치를 클릭하기 위해서 get함수를 사용합니다.
+```python
+def click():
+    lab_text = scale.get()
+    lab.config(text=lab_text)
+```
+
+### 최종코드와 프로그램 실행 화면
+  
+최종코드는 다음과 같습니다.
+```python
+from tkinter import *
+win = Tk()
+win.geometry("500x500")
+win.option_add("*Font", "Arial, 20")
+# Scale
+scale = Scale(win)
+scale.config(length=1000, tickinterval=10, from_=0, to=50, orient="horizontal")
+scale.pack()
+
+# Button
+btn = Button(win)
+btn.config(text="옵션 선택")
+
+
+def click():
+    lab_text = scale.get()
+    lab.config(text=lab_text)
+
+
+btn.config(command=click)
+btn.pack()
+
+# Label
+lab = Label(win)
+lab.pack()
+win.mainloop()
+```
+   
+프로그램 실행 화면은 다음과 같습니다.   
+   
+   
+![Scale_init](https://user-images.githubusercontent.com/58906858/152633220-3590b87d-b744-4b54-b309-e7f67d0017e9.png)   
+   
+수치를 지정하고 옵션버튼을 누르면 라벨에 지정한 수치가 정상적으로 출력됩니다.
+![Scale_use](https://user-images.githubusercontent.com/58906858/152633227-43448c1f-149f-474d-979d-9f4d78c6bc90.png)
+
+
+#### 이렇게 6개의 옵션을 지정하는 위젯들에 대해서 정리해보았습니다. 최종 수정 2022-02-05
