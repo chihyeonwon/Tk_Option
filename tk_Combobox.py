@@ -3,6 +3,11 @@ from tkinter .ttk import *
 win = Tk()
 win.geometry("500x500")
 win.option_add("*Font", "Arial, 20")
+# Combobox
+cb = Combobox(win)
+
+cb.pack()
+
 # Button
 btn = Button(win)
 btn.config(text="옵션 선택")
