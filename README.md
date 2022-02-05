@@ -108,7 +108,9 @@ lab = Label(win)
 lab.pack()
 win.mainloop()
 ```
-프로그램의 초기화면입니다.   
+프로그램의 초기화면입니다.
+   
+
 ![Listbox_init](https://user-images.githubusercontent.com/58906858/152482708-da76f81a-9d17-4c2e-9516-7083325db36d.png)   
    
 2번째 옵션을 선택하고 옵션선택 버튼을 누르면 다음과 같이 몇번 째를 선택했는지 출력해줍니다.
@@ -294,6 +296,78 @@ win.mainloop()
 ![Radiobutton_value](https://user-images.githubusercontent.com/58906858/152487573-c5229c2e-28ab-4f3d-ae81-cd882b8ca4bf.png)
 
 ## Combobox
+   
+### 콤보박스는 tkinter의 세부적인 .ttk 안에 있으므로 이를 import를 해줍니다.
+```python
+from tkinter .ttk import *
+```
+   
+콤보박스를 생성하기 위해 Combobox 함수를 이용하고 배치해줍니다.
+```python
+cb = Combobox(win)
+cb.pack()
+```
+
+### 콤보 박스에 내용을 넣을 때는 리스트를 사용합니다.
+  
+리스트를 만들고 config의 values 옵션으로 만든 리스트를 넣어줍니다.
+```python
+cb_list = ["1", "2", "3"]
+cb = Combobox(win)
+cb.config(values=cb_list)
+cb.pack()
+```
+### 콤보 박스의 어떤 내용이 클릭됬는 지 알아보기 위해서는 get 함수를 사용합니다.
+   
+옵션 선택 버튼의 함수안에 위젯(cb)에 get 함수를 사용해서 리스트에 넣은 내용을 출력할 수 있습니다.
+```python
+def click():
+    lab_text = cb.get()
+    lab.config(text=lab_text)
+```
+
+### 최종 코드와 프로그램 실행 화면
+
+최종 코드는 다음과 같습니다.
+```python
+from tkinter import *
+from tkinter .ttk import *
+win = Tk()
+win.geometry("500x500")
+win.option_add("*Font", "Arial, 20")
+# Combobox
+cb_list = ["1", "2", "3"]
+cb = Combobox(win)
+cb.config(values=cb_list)
+cb.pack()
+
+# Button
+btn = Button(win)
+btn.config(text="옵션 선택")
+
+
+def click():
+    lab_text = cb.get()
+    lab.config(text=lab_text)
+
+
+btn.config(command=click)
+btn.pack()
+
+# Label
+lab = Label(win)
+lab.pack()
+win.mainloop()
+```
+프로그램 실행 초기화면은 다음과 같습니다.   
+   
+![Combobox_init](https://user-images.githubusercontent.com/58906858/152632475-e4f22993-8c5e-49a4-a723-e36cfee12b34.png)   
+   
+클릭하여 옵션 1을 선택하고 옵션선택 버튼을 누르면 버튼 밑에 1이 정상적으로 출력되는 것을 알 수 있습니다.
+![Combobox_use](https://user-images.githubusercontent.com/58906858/152632478-17ab3f18-45e4-4cdf-93f4-48f97432ae6e.png)
+
+
+
 
 ## Spinbox
 
