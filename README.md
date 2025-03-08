@@ -1,7 +1,7 @@
 # Tk_Option
 tkinter와 Python으로 옵션 선택하는 위젯 다루기   
    
-구체적으로는 Listbox, Checkbutton, Radiobutton, Combobox, Spinbox, Scale 6개를 다뤄보도록 하겠습니다.
+구체적으로는 Listbox, Checkbutton, Radiobutton, Combobox, Spinbox, Scale 6개를 다뤄보도록 하겠습니다..
 
 ## Listbox
 
